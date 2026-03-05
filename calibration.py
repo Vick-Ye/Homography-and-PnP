@@ -50,6 +50,9 @@ for i in range(len(objPoints)):
 
 if __name__ == '__main__':
     print('calibration results')
-    print('matrix: ' + cameraMatrix)
-    print('distortion: ' + distCoeffs)
-    print('max projection error: ' + maxError)
+    print('matrix: ')
+    print(cameraMatrix)
+    print('distortion: ')
+    print(distCoeffs)
+    print('max projection error: ')
+    print(maxError)

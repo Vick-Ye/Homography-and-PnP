@@ -51,6 +51,7 @@ for i in range(len(objPoints)):
 
 if __name__ == '__main__':
     print('calibration results')
+<<<<<<< Updated upstream
     print('matrix: ')
     print(cameraMatrix)
     print('distortion: ')
@@ -72,3 +73,9 @@ if __name__ == '__main__':
         #img = img[y:y+h, x:x+w]
         #cv2.imshow('undistorted', img)
         #cv2.waitKey(0)
+=======
+    #print('matrix: ' + cameraMatrix)
+    print(cameraMatrix)
+    print('distortion: ' + distCoeffs)
+    print('max projection error: ' + maxError)
+>>>>>>> Stashed changes

@@ -51,7 +51,6 @@ for i in range(len(objPoints)):
 
 if __name__ == '__main__':
     print('calibration results')
-<<<<<<< Updated upstream
     print('matrix: ')
     print(cameraMatrix)
     print('distortion: ')

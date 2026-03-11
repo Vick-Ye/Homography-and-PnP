@@ -12,7 +12,7 @@ gridPt[:,:2] = np.mgrid[0:numRows,0:numCols].T.reshape(-1,2)
 gridPt *= constants.squareSizeMM
 
 # Corner match criteria
-criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 40, 0.001)
 
 calibrationImages = []
 objPoints = []  # 3D
@@ -33,6 +33,7 @@ for img in calibrationImages:
         if __name__ == '__main__':
             cv2.imshow('match', img)
             cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
 
 
@@ -56,3 +57,18 @@ if __name__ == '__main__':
     print(distCoeffs)
     print('max projection error: ')
     print(maxError)
+    for img in calibrationImages:
+        h, w = img.shape[:2]
+        newcam, roi = cv2.getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, (w, h), 0, (w, h))
+        mapx, mapy = cv2.initUndistortRectifyMap(cameraMatrix, distCoeffs, None, newcam, (w, h), 5)
+        img = cv2.remap(img, mapx, mapy, cv2.INTER_LINEAR)
+        x, y, w, h = roi
+        img = img[y:y+h, x:x+w]
+        cv2.imshow('undistorted', img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        #img = cv2.undistort(img, cameraMatrix, distCoeffs, None, newcam)
+        #x, y, w, h = roi
+        #img = img[y:y+h, x:x+w]
+        #cv2.imshow('undistorted', img)
+        #cv2.waitKey(0)

@@ -73,9 +73,9 @@ if __name__ == '__main__':
         #img = img[y:y+h, x:x+w]
         #cv2.imshow('undistorted', img)
         #cv2.waitKey(0)
-=======
     #print('matrix: ' + cameraMatrix)
     print(cameraMatrix)
-    print('distortion: ' + distCoeffs)
-    print('max projection error: ' + maxError)
->>>>>>> Stashed changes
+    #print('distortion: ' + distCoeffs)
+    print(distCoeffs)
+    #print('max projection error: ' + maxError)
+    print(maxError)
